@@ -1,0 +1,230 @@
+schema_version: "1.0"
+document_name: "JOURNAL_MAP.yaml"
+purpose: "候选期刊映射框架；仅提供结构，不预填任何未经核验的期刊事实。"
+applicable_study_type:
+  - "public_data_analysis"
+  - "local_simulation"
+  - "public_data_plus_local_simulation"
+
+global_constraints:
+  no_fabrication: true
+  no_unverified_journal_facts: true
+  no_assumed_scope_fit: true
+  no_submission_without_official_scope_check: true
+  do_not_claim_external_validation_if_absent: true
+
+project_profile:
+  manuscript_type: "original_research"
+  data_mode:
+    - "public_data"
+    - "local_simulation"
+  expected_core_sections:
+    - "Introduction"
+    - "Methods"
+    - "Results"
+    - "Discussion"
+    - "Conclusion"
+  mandatory_assets:
+    - "traceable_results"
+    - "simulation_assumption_table"
+    - "data_provenance_record"
+    - "claim_ledger"
+    - "pre_submission_checklist"
+
+hard_filters:
+  reject_if_any:
+    - "journal_scope_explicitly_excludes_computational_or_simulation_studies"
+    - "journal_scope_requires_wet_lab_or_prospective_validation_for_this_claim_type"
+    - "article_type_unavailable_for_original_research"
+    - "data_sharing_or_code_sharing_requirements_cannot_be_met"
+    - "manuscript_core_claims_conflict_with_journal_audience"
+    - "ethical_or_regulatory_requirements_cannot_be_satisfied"
+  caution_if_any:
+    - "journal_usually_prefers_multi_center_or_external_validation"
+    - "journal_usually_expects_real_world_deployment_or_experimental_prototype"
+    - "scope_accepts_methods_papers_but_not_domain_applied_analysis"
+    - "strict_length_limits_may_force_loss_of_reproducibility_details"
+
+scoring_weights:
+  scope_fit: 25
+  method_fit: 15
+  evidence_fit: 15
+  validation_expectation_fit: 15
+  audience_fit: 10
+  reproducibility_policy_fit: 5
+  length_and_format_fit: 5
+  review_risk: 5
+  publication_cost_and_access_fit: 5
+
+decision_rules:
+  score_formula: "total_score = sum(weighted_dimension_scores)"
+  weighted_dimension_score_rule: "dimension_score_normalized = raw_score_0_to_5 / 5 * weight"
+  recommendation_thresholds:
+    submit_priority_a: 85
+    submit_priority_b: 75
+    reserve_or_hold: 65
+    reject_below: 65
+  mandatory_minimums:
+    scope_fit: 3
+    evidence_fit: 3
+    validation_expectation_fit: 3
+  override_to_reject_if:
+    - "official_scope_not_verified"
+    - "article_type_not_verified"
+    - "submission_requirements_not_verified"
+    - "core_claims_likely_seen_as_overreach_for_target_journal"
+
+verification_requirements:
+  must_verify_from_official_sources:
+    - "aims_and_scope"
+    - "article_types"
+    - "author_guidelines"
+    - "data_availability_policy"
+    - "code_availability_policy"
+    - "supplementary_material_policy"
+    - "word_limit"
+    - "figure_limit"
+    - "abstract_structure"
+    - "open_access_and_apc"
+    - "special_requirements_for_validation_or_experiments"
+  verification_record_fields:
+    - "verified_on"
+    - "verified_by"
+    - "official_url"
+    - "evidence_excerpt"
+    - "notes"
+
+study_pattern_flags:
+  patterns_likely_acceptable:
+    - "retrospective_public_dataset_analysis"
+    - "computational_modeling_with_clearly_stated_assumptions"
+    - "simulation_supported_mechanistic_exploration"
+    - "methodological_paper_with_reproducible_benchmarks"
+  patterns_high_risk:
+    - "pure_benchmark_increment_without_clear_novelty"
+    - "simulation_only_claiming_real_world_efficacy"
+    - "observational_data_claiming_causality"
+    - "insufficient_validation_presented_as_clinical_or_industrial_utility"
+    - "missing_data_or_code_traceability"
+
+candidate_template:
+  journal_id: null
+  journal_name: null
+  publisher: null
+  official_url: null
+  verified_on: null
+  verified_by: null
+  verification_status: "unverified"
+
+  scope_profile:
+    primary_field: null
+    secondary_field: null
+    target_audience: []
+    scope_keywords: []
+    out_of_scope_keywords: []
+    article_types_supported: []
+    explicit_notes_from_official_scope: []
+
+  indexing_and_visibility:
+    scie_status: null
+    scopus_status: null
+    pubmed_status: null
+    other_indexing: []
+
+  business_model:
+    access_model: null
+    apc_usd: null
+    page_charges_usd: null
+    waiver_policy_note: null
+
+  manuscript_fit:
+    fit_summary: null
+    accepts_public_data_analysis: null
+    accepts_local_simulation: null
+    accepts_public_data_plus_simulation: null
+    likely_needs_external_validation: null
+    likely_needs_physical_experiment: null
+    likely_accepts_method_paper_without_real_world_deployment: null
+
+  format_requirements:
+    abstract_type: null
+    word_limit_main_text: null
+    figure_limit: null
+    table_limit: null
+    reference_style: null
+    supplementary_allowed: null
+    graphical_abstract_required: null
+
+  transparency_requirements:
+    data_availability_required: null
+    code_availability_required: null
+    reporting_guidelines_required: []
+    conflict_of_interest_required: true
+    funding_statement_required: true
+
+  editorial_risk:
+    common_rejection_reasons_for_this_fit: []
+    overclaim_risk_level: null
+    novelty_bar_level: null
+    validation_bar_level: null
+    reproducibility_bar_level: null
+
+  scoring:
+    scope_fit: null
+    method_fit: null
+    evidence_fit: null
+    validation_expectation_fit: null
+    audience_fit: null
+    reproducibility_policy_fit: null
+    length_and_format_fit: null
+    review_risk: null
+    publication_cost_and_access_fit: null
+    total_score: null
+
+  decision:
+    status: "unreviewed"
+    recommendation: null
+    submission_priority: null
+    must_fix_before_submission: []
+    reasons_for_hold_or_reject: []
+
+  evidence_log:
+    - field: null
+      official_url: null
+      verified_on: null
+      evidence_excerpt: null
+      note: null
+
+candidate_journals: []
+
+selection_workflow:
+  - step: 1
+    name: "collect_candidates"
+    output: "initial_candidate_list"
+  - step: 2
+    name: "verify_official_scope"
+    output: "verified_scope_notes"
+  - step: 3
+    name: "match_study_pattern"
+    output: "fit_and_risk_flags"
+  - step: 4
+    name: "score_candidates"
+    output: "ranked_candidate_list"
+  - step: 5
+    name: "check_author_guidelines"
+    output: "submission_constraint_matrix"
+  - step: 6
+    name: "freeze_submission_order"
+    output: "journal_priority_queue"
+
+submission_queue_template:
+  primary_target: null
+  backup_target_1: null
+  backup_target_2: null
+  freeze_date: null
+  rationale: null
+
+notes:
+  - "本文件不应预填未经核验的期刊事实。"
+  - "任何期刊信息若可能随时间变化，必须在投稿前重新核验。"
+  - "若研究核心仅有公开数据关联分析与本地仿真，应优先排除明确要求真实部署、临床前瞻验证或湿实验验证的期刊。"
