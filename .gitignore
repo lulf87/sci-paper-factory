@@ -2,3 +2,6 @@
 *.pyc
 __pycache__/
 .env
+
+# Large dataset files — only track README and provenance, not raw imaging data
+papers/2026_demo_pilot/02_public_data/raw/KiTS23/

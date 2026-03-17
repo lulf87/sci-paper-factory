@@ -1,0 +1,89 @@
+dataset_id: KiTS23
+dataset_name: "2023 Kidney and Kidney Tumor Segmentation Challenge"
+provenance_checked_on: "2026-03-16"
+record_status: "official sources verified; dataset payload not downloaded by assistant in this environment"
+
+local_storage_plan:
+  project_root: "02_public_data"
+  raw_dir: "02_public_data/raw/KiTS23"
+  provenance_dir: "02_public_data/provenance"
+  licenses_dir: "02_public_data/licenses"
+  local_download_date: "2026-03-16"
+  local_download_date_note: "Replace if the actual transfer occurred on a different date."
+
+official_sources:
+  homepage: "https://kits-challenge.org/kits23/"
+  repository: "https://github.com/neheller/kits23"
+  data_license_url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+
+download_mechanism:
+  repository_checkout:
+    description: "Clone the official KiTS23 GitHub repository."
+    command: "git clone https://github.com/neheller/kits23 02_public_data/raw/KiTS23"
+    contents_obtained:
+      - "dataset/case_XXXXX/segmentation.nii.gz"
+      - "dataset/case_XXXXX/instances/"
+      - "kits23/download.py"
+      - "dataset/kits23.json"
+  imaging_download:
+    description: "Run the official download entrypoint from the cloned repository."
+    commands:
+      - "cd 02_public_data/raw/KiTS23"
+      - "pip install -e ."
+      - "kits23_download_data"
+    official_script: "kits23/download.py"
+    url_template: "https://kits19.sfo2.digitaloceanspaces.com/master_{case_num:05d}.nii.gz"
+    local_target_template: "dataset/case_{case_num:05d}/imaging.nii.gz"
+
+case_scope:
+  training_case_numbers: "00000-00299 and 00400-00588"
+  training_case_count: 489
+  held_out_test_case_count: 110
+  note: "The challenge homepage describes 489 training cases and 110 test cases."
+
+versioning:
+  advertised_dataset_version: "0.1.4"
+  advertised_version_note: "README/setup.py/changelog all still advertise 0.1.4."
+  changelog:
+    - date: "2023-04-13"
+      version: "0.1.2"
+      note: "Initial public release"
+    - date: "2023-07-06"
+      version: "0.1.3"
+      note: "Added most up to date data reference"
+    - date: "2025-03-03"
+      version: "0.1.4"
+      note: "Updated dependency for surface distance"
+  reproducibility_recommendation:
+    pin_repository_commit: "5f2b8cd369df7936d3253201560ba831b343ce9f"
+    rationale: "Main branch contains post-v0.1.4 metadata corrections in dataset/kits23.json; record a commit SHA, not only 0.1.4."
+  post_version_commits_of_interest:
+    - date: "2024-01-12"
+      commit: "b8a6d88681ddd64cc76adf47f1710da17f412cc8"
+      change: "added clinical data"
+      file: "dataset/kits23.json"
+    - date: "2025-05-06"
+      commit: "3a584a43b00b67a60e9a5d8ba14426243fc674fa"
+      change: "fixed erroneous malignant flag"
+      file: "dataset/kits23.json"
+    - date: "2025-08-23"
+      commit: "5f2b8cd369df7936d3253201560ba831b343ce9f"
+      change: "fixed erroneous malignant=null values"
+      file: "dataset/kits23.json"
+
+integrity:
+  official_checksum_manifest_found: false
+  official_checksum_manifest_scope_checked:
+    - "challenge homepage"
+    - "GitHub README"
+    - "changelog"
+  note: "No official file-level MD5/SHA256 manifest was located during source verification. Generate a local SHA256 manifest after download."
+  local_integrity_files:
+    - "02_public_data/provenance/KiTS23.sha256"
+    - "02_public_data/provenance/KiTS23.git_commit.txt"
+    - "02_public_data/provenance/KiTS23.git_status.txt"
+
+license:
+  data_license: "CC BY-NC-SA 4.0"
+  code_license: "MIT"
+  note: "The repository code is MIT; the downloaded data are CC BY-NC-SA 4.0."
