@@ -2,6 +2,8 @@
 *.pyc
 __pycache__/
 .env
-
-# Large dataset files — only track README and provenance, not raw imaging data
-papers/2026_demo_pilot/02_public_data/raw/KiTS23/
+# Large dataset files — keep directory structure, exclude raw imaging data
+papers/2026_demo_pilot/02_public_data/raw/KiTS23/**/*.nii.gz
+papers/2026_demo_pilot/02_public_data/raw/KiTS23/**/*.pyc
+papers/2026_demo_pilot/02_public_data/raw/KiTS23/.git/
+papers/2026_demo_pilot/02_public_data/raw/KiTS23/.git_upstream/
