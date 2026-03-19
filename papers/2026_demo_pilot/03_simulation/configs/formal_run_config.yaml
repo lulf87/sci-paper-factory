@@ -1,0 +1,25 @@
+schema_version: 1
+run_id: first_formal_run
+status: DRAFT_DO_NOT_RUN
+
+inputs:
+  planning_instance_csv: ../../03_simulation/runs/planning_instances/planning_instances.csv
+  surrogate_parameter_table: ./surrogate_parameter_table.yaml
+
+filters:
+  include_srm_only: true
+  max_diameter_mm: 40.0
+  exclude_cystic_interference_main_cohort: true
+
+solver:
+  deterministic: true
+  random_seed: 0
+  n_jobs: 1
+
+outputs:
+  run_root: ../../03_simulation/runs/first_formal_run
+  manifest_json: ../../03_simulation/runs/first_formal_run/manifest.json
+
+notes:
+  - Freeze this file before any formal run.
+  - If any field changes after first formal run, create a new run config instead of editing in place.

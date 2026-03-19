@@ -1,0 +1,37 @@
+schema_version: 1
+study_id: kits23_srm_tradeoff
+status: DRAFT_DO_NOT_RUN
+
+assumption_boundary:
+  single_applicator: true
+  generic: true
+  device_agnostic: true
+  multi_applicator: false
+  pull_back: false
+  clinical_parameter_recommendation: false
+
+library_family:
+  geometry: ellipsoid
+  finite_library_required: true
+  same_library_for_all_cases: true
+
+# Fill numeric values only when formally frozen.
+# Example structure:
+# members:
+#   - id: E01
+#     semi_axis_mm: [10.0, 10.0, 12.0]
+#   - id: E02
+#     semi_axis_mm: [12.0, 12.0, 14.0]
+
+members: []
+
+search_space:
+  translation_step_mm: null
+  rotation_step_deg: null
+  roi_margin_mm: null
+
+primary_constraint:
+  complete_coverage_required: true
+
+notes:
+  - Do not fill values post hoc after seeing outcome distributions.
