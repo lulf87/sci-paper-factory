@@ -1,0 +1,17 @@
+{
+  "script": "build_planning_instances.py",
+  "dataset_root": "/Users/lulingfeng/sci-paper-factory/papers/2026_demo_pilot/02_public_data/raw/KiTS23/dataset",
+  "output_dir": "/Users/lulingfeng/sci-paper-factory/papers/2026_demo_pilot/03_simulation/runs/planning_instances",
+  "n_cases_discovered": 489,
+  "n_instances_total": 659,
+  "n_srm_instances": 347,
+  "files": {
+    "planning_instances_csv": "/Users/lulingfeng/sci-paper-factory/papers/2026_demo_pilot/03_simulation/runs/planning_instances/planning_instances.csv",
+    "case_summary_csv": "/Users/lulingfeng/sci-paper-factory/papers/2026_demo_pilot/03_simulation/runs/planning_instances/case_summary.csv"
+  },
+  "notes": [
+    "cyst_adjacent_1voxel is a triage flag only, not the formal cystic-interference exclusion rule",
+    "d_max_mm is computed from maximum pairwise distance among convex-hull-reduced voxel centers in world coordinates",
+    "formal eligibility still requires the protocol-frozen exclusion audit"
+  ]
+}

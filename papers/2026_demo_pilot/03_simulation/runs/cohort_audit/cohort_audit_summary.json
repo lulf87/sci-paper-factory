@@ -1,0 +1,27 @@
+{
+  "input_files": {
+    "planning_instances_csv": "/Users/lulingfeng/sci-paper-factory/papers/2026_demo_pilot/03_simulation/runs/planning_instances/planning_instances.csv",
+    "case_summary_csv": "/Users/lulingfeng/sci-paper-factory/papers/2026_demo_pilot/03_simulation/runs/planning_instances/case_summary.csv"
+  },
+  "n_cases_in_case_summary": 489,
+  "n_raw_instances_total": 659,
+  "n_raw_srm_candidates": 347,
+  "n_hard_excluded_total": 363,
+  "n_hard_excluded_srm": 51,
+  "n_eligible_main_cohort_v1": 296,
+  "eligible_main_cohort_v1_subgroups": {
+    "<=3cm": 207,
+    "3-4cm": 89
+  },
+  "review_flag_counts_within_eligible_v1": {
+    "micro_component_review": 45,
+    "cystic_interference_review_pending": 30,
+    "multifocal_srm_review": 100
+  },
+  "notes": [
+    "eligible_main_cohort_v1 applies only hard exclusions; it is not the final main cohort",
+    "formal cystic_interference still requires a frozen operational rule",
+    "multifocal independence still requires a frozen operational rule",
+    "micro_component_review is intentionally not auto-excluded in this provisional audit"
+  ]
+}

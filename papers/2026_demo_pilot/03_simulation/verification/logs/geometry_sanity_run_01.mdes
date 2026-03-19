@@ -1,0 +1,24 @@
+# Geometry sanity run 01
+
+Date:
+- 2026-03-19
+
+Command:
+```bash
+python papers/2026_demo_pilot/03_simulation/src/run_geometry_sanity_checks.py \
+  --planning-csv papers/2026_demo_pilot/03_simulation/runs/planning_instances/planning_instances.csv \
+  --case-summary-csv papers/2026_demo_pilot/03_simulation/runs/planning_instances/case_summary.csv \
+  --outdir papers/2026_demo_pilot/03_simulation/verification/logs
+Result:
+
+PASS / FAIL
+
+Notes:
+
+lesion count checked
+
+d_max consistency checked
+
+no unexpected label or affine issue observed
+
+if any warnings, list them here
